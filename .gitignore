@@ -23,5 +23,5 @@
 hs_err_pid*
 
 # Intellij IDEA user-specific
-**/.idea/workspace.xml
-**/.idea/vcs.xml
+/.idea/vcs.xml
+/.idea/workspace.xml

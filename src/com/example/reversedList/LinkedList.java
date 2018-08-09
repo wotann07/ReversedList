@@ -1,27 +1,20 @@
 package com.example.reversedList;
 
 
-public class LinkedList {
-    public static class Node {
-        Object value;
-        Node next;
+/**
+ * This is a singly linked list
+ */
+class LinkedList {
+    private Node head;
 
-        public Node(Object value) {
-            this.value = value;
-            next = null;
-        }
-    }
-
-    Node head;
-
-    public LinkedList(Node head) {
+    LinkedList(Node head) {
         if (head == null) {
             throw new IllegalArgumentException();
         }
         this.head = head;
     }
 
-    public void append(Node next) {
+    void append(Node next) {
         Node tmp = head;
         while (tmp.next != null) {
             tmp = tmp.next;
@@ -30,7 +23,7 @@ public class LinkedList {
         tmp.next = next;
     }
 
-    public LinkedList getReverseIterative() {
+    LinkedList getReverseIterative() {
         Node current = head;
         Node reverseHead = new Node(head.value);
 
@@ -44,7 +37,7 @@ public class LinkedList {
         return new LinkedList(reverseHead);
     }
 
-    public void reverseIterative() {
+    void reverseIterative() {
         Node current = head;
         Node reverse = null;
 
@@ -56,6 +49,10 @@ public class LinkedList {
         }
 
         head = reverse;
+    }
+
+    void reverseRecursive() {
+        head = reverseRecursiveHelper(head);
     }
 
     private Node reverseRecursiveHelper(Node n) {
@@ -80,16 +77,22 @@ public class LinkedList {
         return reverse;
     }
 
-    public void reverseRecursive() {
-        head = reverseRecursiveHelper(head);
-    }
-
-    public void print() {
+    void print() {
         Node tmp = head;
         while (tmp.next != null) {
             System.out.println(tmp.value);
             tmp = tmp.next;
         }
         System.out.println(tmp.value);
+    }
+
+    static class Node {
+        Object value;
+        Node next;
+
+        Node(Object value) {
+            this.value = value;
+            next = null;
+        }
     }
 }
